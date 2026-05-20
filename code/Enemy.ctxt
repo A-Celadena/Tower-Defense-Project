@@ -1,0 +1,34 @@
+#BlueJ class context
+comment0.target=Enemy
+comment0.text=\r\n\ Abstract\ base\ class\ for\ all\ enemy\ types.\r\n\ Handles\ waypoint-following\ movement\ and\ health\ management.\r\n\ Subclasses\ must\ provide\ their\ display\ color\ via\ getColor().\r\n
+comment1.params=health\ speed\ goldReward\ path
+comment1.target=Enemy(int,\ int,\ int,\ java.util.ArrayList)
+comment1.text=\r\n\ Constructs\ an\ Enemy\ that\ will\ follow\ the\ given\ path.\r\n\ Starts\ positioned\ at\ the\ first\ waypoint.\r\n\r\n\ @param\ health\ \ \ \ \ starting\ (and\ max)\ health\ points\r\n\ @param\ speed\ \ \ \ \ \ pixels\ moved\ per\ frame\ toward\ the\ next\ waypoint\r\n\ @param\ goldReward\ gold\ awarded\ to\ the\ player\ when\ this\ enemy\ is\ defeated\r\n\ @param\ path\ \ \ \ \ \ \ the\ ordered\ list\ of\ Waypoints\ to\ follow\r\n
+comment10.params=
+comment10.target=double\ getHealthRatio()
+comment10.text=\r\n\ Returns\ a\ value\ from\ 0.0\ to\ 1.0\ representing\ remaining\ health.\r\n\ Used\ by\ GamePanel\ to\ draw\ the\ health\ bar.\r\n\ @return\ health\ ratio\r\n
+comment2.params=
+comment2.target=java.awt.Color\ getColor()
+comment2.text=\r\n\ Returns\ the\ color\ used\ to\ draw\ this\ enemy\ on\ screen.\r\n\ Must\ be\ implemented\ by\ each\ subclass.\r\n\r\n\ @return\ the\ display\ Color\ of\ this\ enemy\r\n
+comment3.params=
+comment3.target=void\ move()
+comment3.text=\r\n\ Moves\ this\ enemy\ toward\ its\ current\ target\ waypoint\ at\ its\ speed.\r\n\r\n\ ALGORITHM\:\r\n\ \ 1.\ If\ reachedEnd\ is\ true\ OR\ currentWaypointIndex\ is\ out\ of\ bounds,\ set\r\n\ \ \ \ \ reachedEnd\ \=\ true\ and\ return\ immediately.\r\n\ \ 2.\ Get\ the\ target\ Waypoint\ at\ currentWaypointIndex.\r\n\ \ 3.\ Calculate\ dx\ \=\ target.getX()\ -\ x\ \ and\ \ dy\ \=\ target.getY()\ -\ y.\r\n\ \ 4.\ Calculate\ distance\ \=\ Math.sqrt(dx\ *\ dx\ +\ dy\ *\ dy).\r\n\ \ 5.\ If\ distance\ <\=\ speed\:\r\n\ \ \ \ \ \ \ -\ Snap\ x\ and\ y\ to\ the\ waypoint's\ coordinates.\r\n\ \ \ \ \ \ \ -\ Increment\ currentWaypointIndex.\r\n\ \ \ \ \ \ \ -\ If\ currentWaypointIndex\ >\=\ path.size(),\ set\ reachedEnd\ \=\ true.\r\n\ \ 6.\ Otherwise\:\r\n\ \ \ \ \ \ \ -\ Move\ one\ step\:\ x\ +\=\ (dx\ /\ distance)\ *\ speed\ \ (same\ for\ y).\r\n
+comment4.params=amount
+comment4.target=void\ takeDamage(int)
+comment4.text=\r\n\ Reduces\ this\ enemy's\ health\ by\ the\ given\ amount.\r\n\ Health\ should\ not\ drop\ below\ zero.\r\n\r\n\ @param\ amount\ the\ amount\ of\ damage\ to\ deal\r\n
+comment5.params=
+comment5.target=boolean\ isDead()
+comment5.text=\r\n\ Returns\ true\ if\ this\ enemy's\ health\ has\ reached\ zero.\r\n\r\n\ @return\ true\ if\ dead,\ false\ otherwise\r\n
+comment6.params=
+comment6.target=int\ getX()
+comment6.text=\r\n\ Returns\ the\ current\ x\ coordinate\ of\ this\ enemy\ (as\ an\ int\ for\ rendering).\r\n\ @return\ x\ position\r\n
+comment7.params=
+comment7.target=int\ getY()
+comment7.text=\r\n\ Returns\ the\ current\ y\ coordinate\ of\ this\ enemy\ (as\ an\ int\ for\ rendering).\r\n\ @return\ y\ position\r\n
+comment8.params=
+comment8.target=int\ getGoldReward()
+comment8.text=\r\n\ Returns\ the\ gold\ reward\ granted\ when\ this\ enemy\ is\ defeated.\r\n\ @return\ gold\ reward\ amount\r\n
+comment9.params=
+comment9.target=boolean\ hasReachedEnd()
+comment9.text=\r\n\ Returns\ true\ if\ this\ enemy\ has\ completed\ the\ full\ path.\r\n\ @return\ true\ if\ the\ enemy\ reached\ the\ end\r\n
+numComments=11

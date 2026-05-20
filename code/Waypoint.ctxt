@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Waypoint
+comment0.text=\r\n\ Represents\ a\ single\ point\ on\ the\ enemy\ path.\r\n\ Enemies\ navigate\ from\ one\ Waypoint\ to\ the\ next\ in\ sequence.\r\n
+comment1.params=x\ y
+comment1.target=Waypoint(int,\ int)
+comment1.text=\r\n\ Constructs\ a\ Waypoint\ at\ the\ given\ coordinates.\r\n\ @param\ x\ the\ x\ coordinate\ of\ this\ waypoint\r\n\ @param\ y\ the\ y\ coordinate\ of\ this\ waypoint\r\n
+comment2.params=
+comment2.target=int\ getX()
+comment2.text=\r\n\ Returns\ the\ x\ coordinate\ of\ this\ waypoint.\r\n\ @return\ x\ coordinate\r\n
+comment3.params=
+comment3.target=int\ getY()
+comment3.text=\r\n\ Returns\ the\ y\ coordinate\ of\ this\ waypoint.\r\n\ @return\ y\ coordinate\r\n
+numComments=4

@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=Runner
+comment0.text=\r\n\ Entry\ point\ for\ the\ Tower\ Defense\ game.\r\n\ Creates\ the\ JFrame,\ attaches\ the\ GamePanel\ and\ Sidebar,\ and\ makes\ the\ window\ visible.\r\n\ Students\ do\ NOT\ modify\ this\ file.\r\n
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment1.text=\r\n\ Main\ method\ \u2014\ launches\ the\ game.\r\n\r\n\ @param\ args\ command-line\ arguments\ (not\ used)\r\n
+numComments=2

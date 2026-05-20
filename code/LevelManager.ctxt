@@ -1,0 +1,37 @@
+#BlueJ class context
+comment0.target=LevelManager
+comment0.text=\r\n\ The\ central\ game-logic\ controller.\r\n\ Manages\ all\ active\ towers\ and\ enemies,\ handles\ the\ economy\ (gold\ and\ lives),\r\n\ controls\ wave\ spawning,\ and\ runs\ the\ per-frame\ update\ loop.\r\n\r\n\ YOU\ WILL\ COMPLETE\ THE\ TODO\ SECTIONS\ in\ this\ file.\r\n
+comment1.params=
+comment1.target=LevelManager()
+comment1.text=\r\n\ Initializes\ the\ LevelManager\ with\ empty\ lists,\ starting\ gold,\r\n\ starting\ lives,\ and\ the\ path\ from\ GameAssets.\r\n
+comment10.params=
+comment10.target=boolean\ isGameOver()
+comment10.text=Returns\ true\ if\ the\ game\ is\ over.
+comment11.params=
+comment11.target=java.util.ArrayList\ getPath()
+comment11.text=Returns\ the\ path\ (used\ by\ GamePanel\ to\ draw\ the\ road).
+comment2.params=x\ y\ type
+comment2.target=void\ addTower(int,\ int,\ int)
+comment2.text=\r\n\ Attempts\ to\ place\ a\ tower\ at\ the\ specified\ coordinates.\r\n\ Creates\ the\ correct\ tower\ type\ based\ on\ the\ type\ parameter,\r\n\ then\ checks\ whether\ the\ player\ can\ afford\ it.\r\n\ If\ they\ can,\ deduct\ the\ cost\ from\ gold\ and\ add\ the\ tower\ to\ activeTowers.\r\n\ If\ they\ cannot,\ do\ nothing.\r\n\r\n\ Tower\ type\ codes\:\r\n\ \ \ 0\ \=\ BasicTower\ \ \ (cost\ 50)\r\n\ \ \ 1\ \=\ RapidTower\ \ \ (cost\ 75)\r\n\ \ \ 2\ \=\ SniperTower\ \ (cost\ 100)\r\n\r\n\ @param\ x\ \ \ \ x\ coordinate\ of\ placement\r\n\ @param\ y\ \ \ \ y\ coordinate\ of\ placement\r\n\ @param\ type\ 0,\ 1,\ or\ 2\ as\ described\ above\r\n
+comment3.params=
+comment3.target=void\ spawnEnemy()
+comment3.text=\r\n\ Spawns\ one\ enemy\ and\ adds\ it\ to\ activeEnemies.\r\n\ Also\ increments\ enemiesSpawnedThisWave.\r\n\r\n\ Wave\ composition\ rules\:\r\n\ \ \ -\ If\ waveNumber\ >\=\ 3\ AND\ this\ is\ the\ last\ enemy\ of\ the\ wave\r\n\ \ \ \ \ (enemiesSpawnedThisWave\ \=\=\ enemiesPerWave\ -\ 1)\:\ spawn\ a\ Tank.\r\n\ \ \ -\ Else\ if\ waveNumber\ >\=\ 2\ AND\ enemiesSpawnedThisWave\ %\ 3\ \=\=\ 2\:\ spawn\ a\ Speedster.\r\n\ \ \ -\ Otherwise\:\ spawn\ a\ Grunt.\r\n\r\n\ All\ enemy\ constructors\ require\ the\ path\ ArrayList\ as\ their\ only\ argument.\r\n
+comment4.params=
+comment4.target=void\ updateAll()
+comment4.text=\r\n\ Executes\ one\ frame\ of\ game\ logic.\ Called\ every\ frame\ by\ GamePanel.\r\n\r\n\ STEP-BY-STEP\:\r\n\ \ 1.\ If\ gameOver\ is\ true,\ return\ immediately\ \u2014\ do\ nothing.\r\n\ \ 2.\ Increment\ frameCount.\r\n\ \ 3.\ WAVE\ SPAWNING\:\ If\ fewer\ enemies\ have\ been\ spawned\ than\ enemiesPerWave\r\n\ \ \ \ \ AND\ frameCount\ %\ SPAWN_INTERVAL\ \=\=\ 0,\ call\ spawnEnemy().\r\n\ \ 4.\ MOVE\:\ Loop\ through\ activeEnemies\ and\ call\ move()\ on\ each\ one.\r\n\ \ 5.\ TOWER\ COOLDOWNS\ &\ FIRING\:\ Loop\ through\ activeTowers.\r\n\ \ \ \ \ \ \ a.\ Call\ tickCooldown()\ on\ each\ tower.\r\n\ \ \ \ \ \ \ b.\ If\ isReadyToFire()\ is\ true\:\r\n\ \ \ \ \ \ \ \ \ \ \ \ -\ Call\ getClosestEnemy(activeEnemies)\ on\ the\ tower.\r\n\ \ \ \ \ \ \ \ \ \ \ \ -\ If\ a\ non-null\ target\ is\ returned\:\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *\ Call\ takeDamage(tower.getDamage())\ on\ the\ target.\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *\ Call\ resetCooldown()\ on\ the\ tower.\r\n\ \ 6.\ REMOVE\ ENEMIES\ (backward\ traversal\ \u2014\ use\ a\ for\ loop\ counting\ DOWN\ from\r\n\ \ \ \ \ activeEnemies.size()\ -\ 1\ to\ 0)\:\r\n\ \ \ \ \ \ \ a.\ If\ the\ enemy\ at\ index\ i\ has\ hasReachedEnd()\ \=\=\ true\:\r\n\ \ \ \ \ \ \ \ \ \ \ \ -\ Decrement\ lives.\r\n\ \ \ \ \ \ \ \ \ \ \ \ -\ Remove\ the\ enemy\ from\ activeEnemies.\r\n\ \ \ \ \ \ \ \ \ \ \ \ -\ If\ lives\ <\=\ 0,\ set\ lives\ \=\ 0\ and\ gameOver\ \=\ true.\r\n\ \ \ \ \ \ \ b.\ Else\ if\ the\ enemy\ at\ index\ i\ has\ isDead()\ \=\=\ true\:\r\n\ \ \ \ \ \ \ \ \ \ \ \ -\ Add\ that\ enemy's\ gold\ reward\ to\ gold.\r\n\ \ \ \ \ \ \ \ \ \ \ \ -\ Remove\ the\ enemy\ from\ activeEnemies.\r\n\ \ 7.\ WAVE\ ADVANCEMENT\:\ If\ enemiesSpawnedThisWave\ >\=\ enemiesPerWave\r\n\ \ \ \ \ AND\ activeEnemies\ is\ empty\:\r\n\ \ \ \ \ \ \ \ \ \ \ \ -\ Increment\ waveNumber.\r\n\ \ \ \ \ \ \ \ \ \ \ \ -\ Reset\ enemiesSpawnedThisWave\ to\ 0.\r\n\ \ \ \ \ \ \ \ \ \ \ \ -\ Increase\ enemiesPerWave\ by\ 3.\r\n
+comment5.params=
+comment5.target=java.util.ArrayList\ getEnemies()
+comment5.text=Returns\ the\ list\ of\ active\ enemies\ (used\ for\ rendering).
+comment6.params=
+comment6.target=java.util.ArrayList\ getTowers()
+comment6.text=Returns\ the\ list\ of\ active\ towers\ (used\ for\ rendering).
+comment7.params=
+comment7.target=int\ getGold()
+comment7.text=Returns\ the\ player's\ current\ gold.
+comment8.params=
+comment8.target=int\ getLives()
+comment8.text=Returns\ the\ player's\ remaining\ lives.
+comment9.params=
+comment9.target=int\ getWaveNumber()
+comment9.text=Returns\ the\ current\ wave\ number.
+numComments=12

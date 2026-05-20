@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=BasicTower
+comment0.text=\r\n\ TODO\:\ Write\ the\ BasicTower\ class.\r\n\r\n\ The\ BasicTower\ is\ a\ balanced,\ affordable\ tower\ suitable\ for\ any\ stage\ of\ the\ game.\r\n\r\n\ REQUIREMENTS\:\r\n\ \ -\ Must\ extend\ Tower.\r\n\ \ -\ Constructor\ takes\ two\ parameters\:\ int\ x,\ int\ y.\r\n\ \ -\ Call\ super()\ with\:\ x,\ y,\ range\ \=\ 100,\ damage\ \=\ 10,\ cost\ \=\ 50,\ cooldownMax\ \=\ 15.\r\n\ \ -\ Override\ getColor()\ to\ return\ Color.BLUE.\r\n\ \ -\ Include\ a\ JavaDoc\ comment\ above\ the\ class\ and\ above\ each\ method.\r\n
+comment1.params=x\ y
+comment1.target=BasicTower(int,\ int)
+comment2.params=
+comment2.target=java.awt.Color\ getColor()
+numComments=3

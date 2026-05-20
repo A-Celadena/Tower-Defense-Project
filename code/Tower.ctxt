@@ -1,0 +1,40 @@
+#BlueJ class context
+comment0.target=Tower
+comment0.text=\r\n\ Abstract\ base\ class\ for\ all\ tower\ types.\r\n\ Handles\ targeting\ (finding\ the\ closest\ enemy\ in\ range)\ and\r\n\ attack\ cooldown\ tracking.\ Subclasses\ define\ their\ own\ stats\r\n\ and\ display\ color.\r\n
+comment1.params=x\ y\ range\ damage\ cost\ cooldownMax
+comment1.target=Tower(int,\ int,\ int,\ int,\ int,\ int)
+comment1.text=\r\n\ Constructs\ a\ Tower\ at\ the\ given\ position\ with\ the\ given\ stats.\r\n\r\n\ @param\ x\ \ \ \ \ \ \ \ \ \ \ x\ coordinate\ of\ the\ tower\r\n\ @param\ y\ \ \ \ \ \ \ \ \ \ \ y\ coordinate\ of\ the\ tower\r\n\ @param\ range\ \ \ \ \ \ \ attack\ range\ in\ pixels\r\n\ @param\ damage\ \ \ \ \ \ damage\ dealt\ per\ attack\r\n\ @param\ cost\ \ \ \ \ \ \ \ gold\ cost\ to\ place\ this\ tower\r\n\ @param\ cooldownMax\ frames\ between\ attacks\ (1\ \=\ every\ frame,\ 30\ \=\ once\ per\ ~second)\r\n
+comment10.params=
+comment10.target=int\ getRange()
+comment10.text=Returns\ the\ range\ of\ this\ tower\ in\ pixels.
+comment11.params=
+comment11.target=int\ getDamage()
+comment11.text=Returns\ the\ damage\ this\ tower\ deals\ per\ attack.
+comment12.params=
+comment12.target=int\ getCost()
+comment12.text=Returns\ the\ gold\ cost\ to\ place\ this\ tower.
+comment2.params=
+comment2.target=java.awt.Color\ getColor()
+comment2.text=\r\n\ Returns\ the\ color\ used\ to\ draw\ this\ tower\ on\ screen.\r\n\ Must\ be\ implemented\ by\ each\ subclass.\r\n\r\n\ @return\ the\ display\ Color\ of\ this\ tower\r\n
+comment3.params=enemies
+comment3.target=Enemy\ getClosestEnemy(java.util.ArrayList)
+comment3.text=\r\n\ Searches\ the\ provided\ list\ and\ returns\ the\ Enemy\ closest\ to\ this\ tower\r\n\ that\ is\ also\ within\ range.\ Returns\ null\ if\ no\ enemy\ qualifies.\r\n\r\n\ ALGORITHM\:\r\n\ \ 1.\ Declare\ a\ variable\ closestTarget\ \=\ null\ and\ minDistance\ \=\ range.\r\n\ \ \ \ \ (Using\ range\ as\ the\ starting\ minimum\ means\ only\ in-range\ enemies\ qualify.)\r\n\ \ 2.\ Loop\ through\ every\ Enemy\ e\ in\ the\ list.\r\n\ \ 3.\ Call\ calculateDistance(e)\ to\ get\ the\ distance.\r\n\ \ 4.\ If\ the\ distance\ is\ <\=\ minDistance,\ update\ minDistance\ and\ closestTarget.\r\n\ \ 5.\ Return\ closestTarget\ (may\ be\ null\ if\ nothing\ was\ in\ range).\r\n\r\n\ @param\ enemies\ the\ list\ of\ active\ enemies\ to\ search\r\n\ @return\ the\ closest\ Enemy\ within\ range,\ or\ null\r\n
+comment4.params=e
+comment4.target=double\ calculateDistance(Enemy)
+comment4.text=\r\n\ Calculates\ and\ returns\ the\ straight-line\ distance\ between\ this\ tower\r\n\ and\ the\ given\ enemy\ using\ the\ distance\ formula.\r\n\r\n\ distance\ \=\ Math.sqrt(\ (ex\ -\ tx)^2\ +\ (ey\ -\ ty)^2\ )\r\n\r\n\ @param\ e\ the\ enemy\ to\ measure\ distance\ to\r\n\ @return\ the\ distance\ in\ pixels\r\n
+comment5.params=
+comment5.target=boolean\ isReadyToFire()
+comment5.text=\r\n\ Returns\ true\ if\ this\ tower\ is\ ready\ to\ fire\ (cooldown\ has\ expired).\r\n\ @return\ true\ if\ the\ tower\ can\ attack\ this\ frame\r\n
+comment6.params=
+comment6.target=void\ resetCooldown()
+comment6.text=\r\n\ Resets\ the\ cooldown\ timer\ to\ its\ maximum.\ Call\ this\ after\ the\ tower\ fires.\r\n
+comment7.params=
+comment7.target=void\ tickCooldown()
+comment7.text=\r\n\ Decrements\ the\ cooldown\ timer\ by\ one.\ Called\ every\ frame.\r\n
+comment8.params=
+comment8.target=int\ getX()
+comment8.text=Returns\ the\ x\ coordinate\ of\ this\ tower.
+comment9.params=
+comment9.target=int\ getY()
+comment9.text=Returns\ the\ y\ coordinate\ of\ this\ tower.
+numComments=13
